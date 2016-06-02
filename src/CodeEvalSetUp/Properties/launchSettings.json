@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CodeEvalSetUp": {
+      "commandName": "Project",
+      "commandLineArgs": "TextFile.txt"
+    }
+  }
+}
