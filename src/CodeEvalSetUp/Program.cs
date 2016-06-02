@@ -8,10 +8,15 @@ namespace CodeEvalSetUp
     {
         public static void Main(string[] args)
         {
-            var oddNumbers = Enumerable.Range(1, 99).Select(x => x%2 == 1 ? x.ToString() : "");
-            foreach (var oddNumber in oddNumbers)
+            foreach (var line in File.ReadLines(args[0]))
             {
-                Console.WriteLine(oddNumber);
+                if (string.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+
+                var words = line.Split(' ');
+                Console.WriteLine(string.Join(" ", words.Reverse()));
             }
         }
     }
