@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace CodeEvalSetUp
 {
@@ -6,36 +8,14 @@ namespace CodeEvalSetUp
     {
         public static void Main(string[] args)
         {
-            var total = 0;
-            var primeTotal = 0;
-            for (var i = 0; primeTotal <= 1000; i++)
+            foreach (var line in File.ReadLines(args[0]))
             {
-                if (!IsPrime(i)) continue;
-                total += i;
-                primeTotal++;
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                var sum = line.Select(n => int.Parse(n.ToString())).Sum();
+                Console.WriteLine(sum);
             }
-
-            Console.WriteLine(total);
-        }
-
-        public static bool IsPrime(int number)
-        {
-            var boundary = Math.Floor(Math.Sqrt(number));
-
-            switch (number)
-            {
-                case 1:
-                    return false;
-                case 2:
-                    return true;
-            }
-
-            for (var i = 2; i <= boundary; ++i)
-            {
-                if (number%i == 0) return false;
-            }
-
-            return true;
         }
     }
 }
