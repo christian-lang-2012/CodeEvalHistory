@@ -10,14 +10,7 @@ namespace CodeEvalSetUp
         {
             foreach (var line in File.ReadLines(args[0]))
             {
-                var characters = line.Split(' ');
-                var lastIndex = int.Parse(characters.Last());
-                var index = characters.Length - lastIndex - 1;
-                if (index < 1 || index > characters.Length - 1)
-                {
-                    continue;
-                }
-                Console.WriteLine(characters[index]);
+                Console.WriteLine(Convert.ToString(int.Parse(line), 2).Count(c => c == '1'));
             }
         }
     }
