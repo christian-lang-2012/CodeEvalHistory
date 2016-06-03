@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace CodeEvalSetUp
 {
@@ -7,21 +6,16 @@ namespace CodeEvalSetUp
     {
         public static void Main(string[] args)
         {
-            var primeNumbers =
-                Enumerable.Range(1, 999).Select(n => IsPrime(n) ? n : 1).OrderByDescending(p => p).ToList();
-            foreach (var primeNumber in primeNumbers)
+            var total = 0;
+            var primeTotal = 0;
+            for (var i = 0; primeTotal <= 1000; i++)
             {
-                var reverse = primeNumber.ToString().Reverse();
-                var reverseString = string.Join("", reverse);
-                if (string.IsNullOrEmpty(reverseString) || primeNumber.ToString() != reverseString)
-                {
-                    continue;
-                }
-                Console.WriteLine(primeNumber);
-                break;
+                if (!IsPrime(i)) continue;
+                total += i;
+                primeTotal++;
             }
 
-            Console.ReadLine();
+            Console.WriteLine(total);
         }
 
         public static bool IsPrime(int number)
