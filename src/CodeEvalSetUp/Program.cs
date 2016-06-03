@@ -8,8 +8,17 @@ namespace CodeEvalSetUp
     {
         public static void Main(string[] args)
         {
-            var nums = (from line in File.ReadLines(args[0]) where !string.IsNullOrEmpty(line) select int.Parse(line)).ToList();
-            Console.WriteLine(nums.Sum());
+            foreach (var line in File.ReadLines(args[0]))
+            {
+                var characters = line.Split(' ');
+                var lastIndex = int.Parse(characters.Last());
+                var index = characters.Length - lastIndex - 1;
+                if (index < 1 || index > characters.Length - 1)
+                {
+                    continue;
+                }
+                Console.WriteLine(characters[index]);
+            }
         }
     }
 }
